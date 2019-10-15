@@ -1,0 +1,35 @@
+<h3>Usuarios registrados</h3>
+
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <strong class="card-title">Lista de usuarios</strong>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Nombre de usuario</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th># Universidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of usuarios">
+                                    <td> {{ item.nombreUsuario }} </td>
+                                    <td> {{ item.nombre }} </td>
+                                    <td> {{ item.apellido }} </td>
+                                    <td> {{ item.idUniversidad }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
