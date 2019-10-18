@@ -17,17 +17,13 @@ export class ListarUsuariosComponent implements OnInit {
   }
 
   listarUsuario() {
-    debugger
     let lista = this.usuarioHttp.listaUsuarios();
     lista.snapshotChanges().subscribe(
       resp => {
-        console.log('Respuesta del servicio ....', resp);
         this.usuarios = [];
         resp.forEach(item => {
           let usuario = item.payload.toJSON();
           usuario['$key'] = item.key;
-          console.log("item que se imprime.......", usuario)
-          debugger
           if (!usuario['archived'] || usuario['archived'] == false) {
             this.usuarios.push(usuario);
           }

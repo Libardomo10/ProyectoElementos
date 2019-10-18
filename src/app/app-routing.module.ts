@@ -3,18 +3,26 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListarUsuariosComponent } from '../app/usuarios/listarUsuarios/listar-usuarios.component';
 import { RegistrarUsuariosComponent } from '../app/usuarios/registrar-usuarios/registrar-usuarios.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { AgregarComentarioComponent } from '../app/blog/agregar-comentario/agregar-comentario.component';
+import { InfoMateriaComponent } from './informacion/info-materia/info-materia.component';
+import { InfoIIComponent } from './informacion/info-ii/info-ii.component';
+import { VerComentariosComponent } from './blog/ver-comentarios/ver-comentarios.component';
 
 const routes: Routes = [
   { path: 'ListaUsuarios', component: ListarUsuariosComponent },
   { path: 'Registro', component: RegistrarUsuariosComponent },
+  { path: 'blog/Comentario', component: AgregarComentarioComponent },
   { path: 'Login', component: LoginComponent },
-  { path: '', redirectTo: '/Login', pathMatch: 'full' },
+  { path: "Inicio", component: InfoMateriaComponent },
+  { path: "infoII", component: InfoIIComponent },
+  { path: "Comentarios", component: VerComentariosComponent},
+  { path: '', redirectTo: '/Inicio', pathMatch: 'full' },
 ];
 
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

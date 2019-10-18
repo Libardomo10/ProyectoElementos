@@ -6,12 +6,23 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AppRoutingModule } from './app-routing.module';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 // Servicios
 import { UsuarioService } from '../app/usuarios/servicios/usuario.service';
 // Usuarios
 import { ListarUsuariosComponent } from './usuarios/listarUsuarios/listar-usuarios.component';
 import { RegistrarUsuariosComponent } from './usuarios/registrar-usuarios/registrar-usuarios.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { LeftMenuComponent } from './Layout/left-menu/left-menu.component';
+import { TopBarNavComponent } from './Layout/top-bar-nav/top-bar-nav.component';
+import { AgregarComentarioComponent } from './blog/agregar-comentario/agregar-comentario.component';
+import { FooterComponent } from './Layout/footer/footer.component';
+import { ContenedorComponent } from './Layout/contenedor/contenedor.component';
+import { VerComentariosComponent } from './blog/ver-comentarios/ver-comentarios.component';
+import { InfoMateriaComponent } from './informacion/info-materia/info-materia.component';
+import { AlertasComponent } from './Layout/alertas/alertas.component';
+import { InfoIIComponent } from './informacion/info-ii/info-ii.component';
 // Blog
 
 @NgModule({
@@ -19,7 +30,16 @@ import { LoginComponent } from './usuarios/login/login.component';
     AppComponent,
     ListarUsuariosComponent,
     RegistrarUsuariosComponent,
-    LoginComponent
+    LoginComponent,
+    LeftMenuComponent,
+    TopBarNavComponent,
+    AgregarComentarioComponent,
+    FooterComponent,
+    ContenedorComponent,
+    VerComentariosComponent,
+    InfoMateriaComponent,
+    AlertasComponent,
+    InfoIIComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,10 +47,13 @@ import { LoginComponent } from './usuarios/login/login.component';
     AngularFireDatabaseModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFontAwesomeModule,
+    NgbModule.forRoot(),
   ],
   providers: [
     UsuarioService,
+    NgbActiveModal,
   ],
   bootstrap: [AppComponent]
 })

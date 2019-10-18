@@ -1,90 +1,74 @@
-<!-- <div class="card" style="width: 40rem;"> -->
-<div class="card mb-3">
-    <div class="card-header text-center">
-        <h2>Registro de usuarios</h2>
-    </div>
-    <div class="card-body">
-        <form [formGroup]="form">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="nombre">Nombre: </label>
-                    <input type="text" class="form-control" id="nombre"
-                        placeholder="Nombre" formControlName="nombre">
-                    <small class="form-text text-muted">Ingrese aquí su nombre.</small>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="apellido">Apellido</label>
-                    <input type="text" class="form-control"
-                        id="apellido" placeholder="Apellido" formControlName="apellido">
-                    <small class="form-text text-muted">Ingrese aquí su
-                        apellido.</small>
+<div class="breadcrumbs">
+    <div class="breadcrumbs-inner">
+        <div class="row m-0">
+            <div class="col-sm-4">
+                <div class="page-header float-left">
+                    <div class="page-title">
+                        <h1>Registro de usuarios</h1>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="numUniversidad">Número Universidad: </label>
-                <input type="text" class="form-control" id="idUniversidad"
-                    placeholder="Número Universidad" formControlName="idUniversidad">
-                <small class="form-text text-muted">Ingrese aquí su número de
-                    tarjeta de la universidad.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Nombre de usuario: </label>
-                <input type="text" class="form-control" id="username"
-                    placeholder="Usuario" formControlName="nombreUsuario">
-                <small class="form-text text-muted">Ingrese aquí el nombre de
-                    usuario.</small>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputPassword1">Contraseña</label>
-                <input type="password" class="form-control" id="cts"
-                    placeholder="Contraseña" formControlName="contrasenia">
-            </div>
-            <!-- <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input"
-                    id="exampleCheck1">
-                <label class="form-check-label" for="exampleCheck1">Acepta
-                    terminos
-                    y condiciones.</label>
-            </div> -->
-            <button type="submit" (click)="guardarUsuario()" class="btn btn-primary">Registrarme</button>
-        </form>
+        </div>
     </div>
 </div>
-<!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-        <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+
+<div class="content">
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="pay-invoice">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    <h3 class="text-center">Registrarme!</h3>
+                                </div>
+                                <hr>
+                                <form [formGroup]="form" action="#" method="post" novalidate="novalidate">
+                                    <div class="row form-group">
+                                        <div class="col-6">
+                                            <label for="nombre" class="control-label mb-1">Nombre</label>
+                                            <input type="text" placeholder="Ingrese su nombre" class="form-control"
+                                                formControlName="nombre">
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="apellido" class="control-label mb-1">Apellido</label>
+                                            <input type="text" placeholder="Ingrese su apellido" class="form-control"
+                                                formControlName="apellido">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="numUniversidad" class="control-label mb-1">Número Identificaciòn
+                                            Universidad</label>
+                                        <input type="text" placeholder="# Identificaciòn" class="form-control"
+                                            formControlName="idUniversidad">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usuario" class="control-label mb-1">Usuario</label>
+                                        <input type="text" placeholder="Usuario" class="form-control"
+                                            formControlName="nombreUsuario">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password" class="control-label mb-1">Contraseña</label>
+                                        <input type="password" placeholder="Contraseña" class="form-control"
+                                            formControlName="contrasenia">
+                                    </div>
+                                    <div>
+                                        <button id="payment-button" type="submit" (click)="guardarUsuario()"
+                                            class="btn btn-lg btn-success btn-block">
+                                            <span id="payment-button-amount">Registrarme</span>
+                                        </button>
+                                    </div>
+                                </form>
+                                <p></p>
+                                <ngb-alert *ngIf="successMessage" type="success" (close)="successMessage = null">
+                                    {{ successMessage }}
+                                </ngb-alert>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group">
-        <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-            <div *ngIf="f.password.errors.required">Password is required</div>
-            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-        </div>
-    </div>
-    <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">
-            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-            Register
-        </button>
-        <a routerLink="/login" class="btn btn-link">Cancel</a>
-    </div>
-</form> -->
+</div>

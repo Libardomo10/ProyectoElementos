@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UsuarioService } from '../servicios/usuario.service';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-registrar-usuarios',
@@ -8,6 +10,11 @@ import { UsuarioService } from '../servicios/usuario.service';
   styleUrls: ['./registrar-usuarios.component.css']
 })
 export class RegistrarUsuariosComponent implements OnInit {
+
+  private _success = new Subject<string>();
+
+  staticAlertClosed = false;
+  successMessage: string;
 
   form: FormGroup;
   usuarios: any[];
@@ -19,6 +26,12 @@ export class RegistrarUsuariosComponent implements OnInit {
   ngOnInit() {
     this.listarUsuario();
     this.crearFormulario();
+    setTimeout(() => this.staticAlertClosed = true, 20000);
+
+    this._success.subscribe(message => this.successMessage = message);
+    this._success.pipe(
+      debounceTime(5000)
+    ).subscribe(() => this.successMessage = null);
   }
 
   crearFormulario() {
@@ -26,7 +39,7 @@ export class RegistrarUsuariosComponent implements OnInit {
       id: 0,
       nombre: '',
       apellido: '',
-      idUniversidad: 0,
+      idUniversidad: '',
       nombreUsuario: '',
       contrasenia: '',
       idRolFK: 0
@@ -34,17 +47,13 @@ export class RegistrarUsuariosComponent implements OnInit {
   }
 
   listarUsuario() {
-    debugger
     let lista = this.usuarioHttp.listaUsuarios();
     lista.snapshotChanges().subscribe(
       resp => {
-        console.log('Respuesta del servicio ....', resp);
         this.usuarios = [];
         resp.forEach(item => {
           let usuario = item.payload.toJSON();
           usuario['$key'] = item.key;
-          console.log("item que se imprime.......", usuario)
-          debugger
           if (!usuario['archived'] || usuario['archived'] == false) {
             this.usuarios.push(usuario);
           }
@@ -58,9 +67,25 @@ export class RegistrarUsuariosComponent implements OnInit {
       this.form.value.id = this.usuarios.length + 1;
     }
     this.form.value.idRolFK = 3;
-    this.usuarioHttp.agregarUsuario(this.form.value);
+    if (this.form.value.nombre == "") {
+      return this._success.next(`Ingrese nombre.`);
+    } else if (this.form.value.apellido == "") {
+      return this._success.next(`Ingrese apellido.`);
+    } else if (this.form.value.idUniversidad == "") {
+      return this._success.next(`Ingrese # de Universidad.`);
+    } else if (this.form.value.nombreUsuario == "") {
+      return this._success.next(`Ingrese Usuario.`);
+    } else if (this.form.value.contrasenia == "") {
+      return this._success.next(`Ingrese la contraseña.`);
+    } else {
+      this.usuarioHttp.agregarUsuario(this.form.value);
+      this.changeSuccessMessage();
+    }
   }
 
-
+  public changeSuccessMessage() {
+    this._success.next(`Registrado correctamente.`);
+    this.crearFormulario();
+  }
 
 }

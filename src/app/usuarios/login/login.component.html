@@ -1,53 +1,39 @@
-<div class="bg-dark">
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
     <div class="sufee-login d-flex align-content-center flex-wrap">
         <div class="container">
             <div class="login-content">
-                <!-- <div class="login-logo">
-                <a href="index.html">
-                  <img class="align-content" src="images/logo.png" alt="">
-                </a>
-              </div> -->
                 <div class="login-form">
-                    <h2 class="text-center">Login</h2>
+                    <h2 class="text-center">Inicio de Sesiòn</h2>
                     <form [formGroup]="form">
                         <div class="form-group">
                             <label>Usuario: </label>
-                            <input type="email" class="form-control"
-                                formControlName="nombreUsuario"
+                            <input type="email" class="form-control" formControlName="nombreUsuario"
                                 placeholder="Usuario">
                         </div>
                         <div class="form-group">
                             <label>Contraseña: </label>
-                            <input type="password" class="form-control"
-                                formControlName="contrasenia"
+                            <input type="password" class="form-control" formControlName="contrasenia"
                                 placeholder="Contraseña">
                         </div>
-                        <!-- <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Recordarme!
-                            </label>
-                            <label class="pull-right">
-                                <a href="#">Restrablecer contraseña?</a>
-                            </label>
 
-                        </div> -->
-                        <button type="submit" (click)="sesionUsuario()"
-                            class="btn btn-success btn-flat
-                            m-b-30 m-t-30">
+                        <button type="submit" (click)="sesionUsuario()" class="btn btn-success btn-flat m-b-30 m-t-30">
                             Iniciar Sesión
                         </button>
-                        <!-- <div class="social-login-content">
-                              <div class="social-button">
-                                  <button type="button" class="btn social facebook
-                                      btn-flat btn-addon mb-3"><i class="ti-facebook"></i>Sign
-                                      in with facebook</button>
-                                  <button type="button" class="btn social twitter
-                                      btn-flat btn-addon mt-2"><i class="ti-twitter"></i>Sign
-                                      in with twitter</button>
-                              </div>
-                          </div> -->
+                        <p></p>
+                        <div class="form-group">
+                            <ngb-alert *ngIf="mensajeError" type="danger" (close)="mensajeError = null">
+                                {{ mensajeError }}
+                            </ngb-alert>
+                        </div>
+
                         <div class="register-link m-t-15 text-center">
-                            <p>No tienes cuenta? <a routerLink="/Registro">
+                            <p>¿No tienes cuenta? <a routerLink="/Registro" (click)="activeModal.close('Close click')">
                                     Registrate aquí!</a></p>
                         </div>
                     </form>
