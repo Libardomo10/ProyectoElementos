@@ -54,6 +54,7 @@ import { InfoIIComponent } from './informacion/info-ii/info-ii.component';
   providers: [
     UsuarioService,
     NgbActiveModal,
+    LeftMenuComponent
   ],
   bootstrap: [AppComponent]
 })

@@ -14,20 +14,67 @@
 
 <div class="content">
     <div class="animated fadeIn">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header">
-                        <strong class="card-title">Agregar un comentario</strong>
-                    </div>
-                    <div class="card-body">
-                        <div class="vue-lists">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <h3>Por integrar...</h3>
-                                </div>
+        <div class="orders">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="box-title">Haz un comentario </h4>
+                        </div>
+                        <div class="card-body--">
+                            <div class="table-stats order-table ov-h">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="serial">Nombre</th>
+                                            <th class="avatar">comentario</th>
+                                            <th>Estado</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let item of comentarios">
+                                            <td class="serial">
+                                                {{ item.nombre }}
+                                                {{ item.apellido }}
+                                            </td>
+                                            <td> {{ item.Comentario }} </td>
+                                            <td>
+                                                <span class="badge
+                                                    badge-complete">
+                                                    Enviado
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
+                        <form [formGroup]="form" action="#" method="post"
+                            novalidate="novalidate">
+                            <div class="card-body">
+                                <div class="input-group mb-4">
+                                    <input type="text" class="form-control"
+                                        placeholder="Agrega tú comentario"
+                                        aria-label="Agrega tú comentario"
+                                        aria-describedby="button-addon2"
+                                        formControlName="Comentario">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-success"
+                                            type="submit"
+                                            id="button-addon2"
+                                            (click)="agregarComentario()">
+                                            Enviar
+                                            <i class="fa fa-play"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <p></p>
+                                <ngb-alert *ngIf="successMessage" type="success"
+                                    (close)="successMessage= null">
+                                    {{ successMessage }}
+                                </ngb-alert>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

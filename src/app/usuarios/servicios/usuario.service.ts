@@ -8,12 +8,18 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject } from '@angula
 export class UsuarioService {
 
   listaRegistros: AngularFireList<any[]>;
+  listaComentarios: AngularFireList<any[]>;
 
   constructor(private db: AngularFireDatabase) { }
 
   listaUsuarios() {
     this.listaRegistros = this.db.list('/usuarios') as AngularFireList<any[]>;
     return this.listaRegistros;
+  }
+
+  listarComentarios() {
+    this.listaComentarios = this.db.list('/comentarios') as AngularFireList<any[]>;
+    return this. listaComentarios;
   }
 
   actualizarUsuario(key, usuario) {
@@ -27,6 +33,10 @@ export class UsuarioService {
   agregarUsuario(usuario) {
     this.listaRegistros = this.db.list('/usuarios') as AngularFireList<any[]>;
     this.listaRegistros.push(usuario);
-    // this.listaRegistros.push(usuario);
+  }
+  
+  agregarComentario(objComentario) {
+    this.listaComentarios = this.db.list('/comentarios') as AngularFireList<any[]>;
+    this.listaComentarios.push(objComentario);
   }
 }

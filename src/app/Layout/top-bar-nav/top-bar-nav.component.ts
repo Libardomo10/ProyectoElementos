@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginComponent } from '../../usuarios/login/login.component';
 import { readlink } from 'fs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-top-bar-nav',
@@ -13,7 +14,8 @@ export class TopBarNavComponent implements OnInit {
   sesion: {};
   mostrar: boolean = true;
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal,
+    public router: Router) { }
 
   ngOnInit() {
     this.obtenerSesion();
@@ -38,11 +40,12 @@ export class TopBarNavComponent implements OnInit {
     }
   }
 
-  cerrarSesion() {
+  async cerrarSesion() {
     sessionStorage.removeItem('Sesion');
     sessionStorage.clear();
     this.mostrar = true;
     console.log('Session......', this.mostrar);
-    location.reload();
+    
+    location.reload(await this.router.navigate(['/Inicio']));
   }
 }

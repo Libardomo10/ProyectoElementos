@@ -68,15 +68,15 @@ export class RegistrarUsuariosComponent implements OnInit {
     }
     this.form.value.idRolFK = 3;
     if (this.form.value.nombre == "") {
-      return this._success.next(`Ingrese nombre.`);
+      return this._success.next('Ingrese nombre.');
     } else if (this.form.value.apellido == "") {
-      return this._success.next(`Ingrese apellido.`);
+      return this._success.next('Ingrese apellido.');
     } else if (this.form.value.idUniversidad == "") {
-      return this._success.next(`Ingrese # de Universidad.`);
+      return this._success.next('Ingrese # de Universidad.');
     } else if (this.form.value.nombreUsuario == "") {
-      return this._success.next(`Ingrese Usuario.`);
+      return this._success.next('Ingrese Usuario.');
     } else if (this.form.value.contrasenia == "") {
-      return this._success.next(`Ingrese la contraseña.`);
+      return this._success.next('Ingrese la contraseña.');
     } else {
       this.usuarioHttp.agregarUsuario(this.form.value);
       this.changeSuccessMessage();
@@ -84,7 +84,7 @@ export class RegistrarUsuariosComponent implements OnInit {
   }
 
   public changeSuccessMessage() {
-    this._success.next(`Registrado correctamente.`);
+    this._success.next('Registrado correctamente.');
     this.crearFormulario();
   }
 
