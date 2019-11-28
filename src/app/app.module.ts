@@ -24,6 +24,12 @@ import { InfoMateriaComponent } from './informacion/info-materia/info-materia.co
 import { AlertasComponent } from './Layout/alertas/alertas.component';
 import { InfoIIComponent } from './informacion/info-ii/info-ii.component';
 // Blog
+// import { HttpClient, HttpHandler, httpM } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
+import { RelacionesySusPropiedadesComponent } from './informacion/relacionesy-sus-propiedades/relacionesy-sus-propiedades.component';
+import { Ecuaciones1erOrdenComponent } from './informacion/ecuaciones1er-orden/ecuaciones1er-orden.component';
+// import { HttpModule } from '@angular/common/http';
+// import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -40,6 +46,8 @@ import { InfoIIComponent } from './informacion/info-ii/info-ii.component';
     InfoMateriaComponent,
     AlertasComponent,
     InfoIIComponent,
+    RelacionesySusPropiedadesComponent,
+    Ecuaciones1erOrdenComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,11 +58,13 @@ import { InfoIIComponent } from './informacion/info-ii/info-ii.component';
     AppRoutingModule,
     AngularFontAwesomeModule,
     NgbModule.forRoot(),
+    HttpClientModule
   ],
   providers: [
     UsuarioService,
     NgbActiveModal,
-    LeftMenuComponent
+    LeftMenuComponent,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })

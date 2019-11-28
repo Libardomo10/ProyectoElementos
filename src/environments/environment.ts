@@ -9,5 +9,6 @@ export const environment = {
     messagingSenderId: "135924165823",
     appId: "1:135924165823:web:e630f507ef171fbd2eaa0a",
     measurementId: "G-NCNYBMJRD3"
-  }
+  },
+  tesauro : 'http://skos.um.es/unescothes/C00001/jsonld'
 };

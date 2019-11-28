@@ -3,29 +3,62 @@
 
         <div id="main-menu" class="main-menu collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li>
-                    <a routerLink="/Inicio"><i class="menu-icon fa fa-home"></i>Inicio </a>
+                <li class="menu-title" *ngIf="!mostrar">Registrate aquí</li>
+                <li class="menu-item-has-children dropdown" *ngIf="!mostrar">
+                        <a class="dropdown-toggle" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false"> <i
+                                class="menu-icon fa fa-list-ul"></i>Registro</a>
+                        <ul class="sub-menu children dropdown-menu">
+                            <li><i class="fa fa-list-ul"></i><a routerLink="/Inicio">Inicio</a></li>
+                            <li><i class="fa fa-list-ul"></i><a routerLink="/Registro">Registro</a></li>
+                        </ul>
+                    </li>
+                <li class="menu-title" *ngIf="mostrar">Temas</li>
+                <li class="menu-item-has-children dropdown" *ngIf="mostrar">
+                    <a class="dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> <i
+                            class="menu-icon fa fa-book"></i>Temas Generales</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-book"></i><a routerLink="/Inicio">Tabla
+                                Equivalencias Parte I </a></li>
+                        <li><i class="fa fa-book"></i>
+                            <a routerLink="/infoII">Tabla Equivalencias Parte
+                                II 
+                            </a>
+                        </li>
+                        <li *ngIf="mostrar"><i class="fa fa-book"></i>
+                            <a routerLink="/ecuacionesRecurrencia">Ecuaciones de recurrencia
+                            </a>
+                        </li>
+                        <li *ngIf="mostrar"><i class="fa fa-book"></i>
+                            <a routerLink="/ecuaciones1erOrden">Ecuaciones de primer orden
+                            </a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a routerLink="/infoII"><i class="menu-icon fa fa-info-circle"></i>Info. II </a>
-                </li>
+                <!--  *ngIf="mostrar" -->
                 <li class="menu-title" *ngIf="mostrar">Componentes</li>
                 <li class="menu-item-has-children dropdown" *ngIf="mostrar">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
+                    <a class="dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> <i
                             class="menu-icon fa fa-cogs"></i>Componentes</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-book"></i><a routerLink="/Registro">Registro</a></li>
-                        <li><i class="fa fa-list-ul"></i><a routerLink="/ListaUsuarios">Lista
+                        <li><i class="fa fa-list-ul"></i><a routerLink="/Registro">Registro</a></li>
+                        <li><i class="fa fa-list-ul"></i><a
+                                routerLink="/ListaUsuarios">Lista
                                 de Usuarios </a></li>
                     </ul>
                 </li>
                 <li class="menu-title" *ngIf="mostrarBlog">Blog</li>
                 <li class="menu-item-has-children dropdown" *ngIf="mostrarBlog">
-                    <a class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i
-                            class="menu-icon fa fa-pencil-square-o"></i>Blog de comentarios</a>
+                    <a class="dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"> <i
+                            class="menu-icon fa fa-pencil-square-o"></i>Blog de
+                        comentarios</a>
                     <ul class="sub-menu children dropdown-menu">
-                        
-                        <li><i class="fa fa-users"></i><a routerLink="blog/Comentario">Comentar en el blog</a></li>
+
+                        <li><i class="fa fa-users"></i><a
+                                routerLink="blog/Comentario">Comentar en el blog</a></li>
                     </ul>
                 </li>
             </ul>
